@@ -22,7 +22,7 @@ It should look like this:
 }
 ```
 
-Last, but not least:
+Last, but not least, use this in the main directory:
 
 ```bash
 node index.js

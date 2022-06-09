@@ -1,5 +1,6 @@
 const retard = require('../../models/authModel.js');
 const mongoose = require('mongoose');
+const { Roles } = require('../../config/rolesToAdd.js');
 
 module.exports = {
     name: "getcode",
@@ -23,6 +24,9 @@ module.exports = {
                 await interaction.reply({ content: "User-Specific Password generated!\nPlease use the same command again to view.", ephemeral: true })
             } else {
                 if (user.isVerified) {
+                    for (let i = 0; i < Roles.length; i++) {
+                        interaction.member.roles.add(Roles[i])
+                    }
                     return await interaction.reply({ content: "You are already verified!", ephemeral: true })
                 }
                 encryptToB64(user, interaction);
